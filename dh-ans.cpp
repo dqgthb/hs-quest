@@ -47,6 +47,8 @@ int main() {
 
     cout << "두 정수와 연산자를 입력하세요 >> ";
     cin >> x >> c >> y;
+    // 심심해서 추가하는 인풋 디버깅
+    printf("x = %d, c = %c, y = %d\n", x,c,y);
     cal.setValue(x, y);
 
     switch (c) {
