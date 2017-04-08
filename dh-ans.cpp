@@ -2,7 +2,7 @@
 using namespace std;
 
 class Calc {
-   int n1, n2;                          
+   int n1, n2;
 public:
    Calc (int n1, int n2)
    {
@@ -10,9 +10,9 @@ public:
       n1 = 0;
    }
    void setValue(int x, int y);        // 값을 받아서 a, b 에 각각 저장
-   int addition();               
-   int substition();               
-   int multiple();              
+   int addition();
+   int substition();
+   int multiple();
    double division();
 };
 
