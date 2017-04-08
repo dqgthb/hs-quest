@@ -4,8 +4,7 @@ using namespace std;
 class Calc {
    int n1, n2;
 public:
-   Calc (int n1, int n2)
-   {
+   Calc () {
       n2 = 0;
       n1 = 0;
    }
