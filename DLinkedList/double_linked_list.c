@@ -23,7 +23,7 @@ void display(DlistNode *phead)
     DlistNode *p;
     for (p = phead->rlink; p != phead; p = p->rlink)
     {
-        printf("<--- | %x | %d | %x | ---> \n", p->llink, p->data, p->rlink);
+        printf("<--- | %p | %d | %p | ---> \n", p->llink, p->data, p->rlink);
     }
     printf("\n");
 }
