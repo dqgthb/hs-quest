@@ -3,7 +3,7 @@ CCFLAGS=-g -Wall -Wextra
 LDFLAGS=
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
-TARGET=des
+TARGET=a.out
 
 all: $(TARGET)
 	./$(TARGET)
