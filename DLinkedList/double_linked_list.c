@@ -4,7 +4,7 @@
 #include <string.h>
 
 typedef int element;
-typedef struct DListNode
+typedef struct DlistNode
 {
    element data;
    struct DlistNode *llink;
