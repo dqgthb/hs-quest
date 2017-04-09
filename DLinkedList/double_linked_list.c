@@ -49,7 +49,7 @@ void dremove_node(DlistNode *phead_node, DlistNode *removed)
 }
 
 //이중 연결 리스트 테스트 프로그램
-void main()
+int main()
 {
    DlistNode head_node;
    DlistNode *p[10];
@@ -65,4 +65,5 @@ void main()
    }
    dremove_node(&head_node, p[4]);
    display(&head_node);
+   return 0;
 }
