@@ -19,6 +19,8 @@ void vinsert(char** List, char* string){
     int length = detectLength(List);
 
     for (counter=0; counter < length; counter++){
+        // 주의사항!! ascii 코드를 기준으로 정렬하기 때문에, 대문자 A-Z 가 소문자 a-z 앞에 온다.
+        // 수정하고 싶다면 string 을 소문자로 변환하여 비교하라.
         if (strcmp(List[counter],string)<0){
             continue;
         }
@@ -50,7 +52,9 @@ int main(){
 
     // vinsert 테스트
     vinsert(Verb, (char*)"hello");
+    vinsert(Verb, (char*)"Hello");
     vinsert(Verb, (char*)"zzzZ");
+    vinsert(Verb, (char*)"ZzzZ");
     vinsert(Verb, (char*)"aAAAAAAAAAAAA");
 
     //최종 출력
