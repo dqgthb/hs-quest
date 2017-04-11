@@ -29,28 +29,29 @@ void vinsert(char** List, char* string){
 
 int main(){
 
+    // 구조체 정의
     char** Verb = (char **)malloc(100 * sizeof Verb);
     memset(Verb, 0, 100 * sizeof Verb);
+
+    // 저장 구조 생성
     *Verb = (char*)"do";
     *(Verb+1) = (char*)"go";
     *(Verb+2) = (char*)"like";
     *(Verb+3) = (char*)"move";
 
-    printf("%s\n",*Verb);
-    printf("%s\n",*(Verb+1));
-    printf("%s\n",*(Verb+2));
-    printf("%s\n",*(Verb+3));
+    //구조체 테스트 출력
+    printf("구조체 출력:\n");
+    for (int i = 0; i < detectLength(Verb); i++){
+        printf("%s\n", Verb[i]);
+    }
 
+    // vinsert 테스트
+    vinsert(Verb, (char*)"hello");
+    vinsert(Verb, (char*)"zzzZ");
+    vinsert(Verb, (char*)"aAAAAAAAAAAAA");
 
-    printf("%d\n",detectLength(Verb));
-
-    vinsert(Verb, "hello");
-    printf("%d\n",detectLength(Verb));
-    vinsert(Verb, "zzzZ");
-    printf("%d\n",detectLength(Verb));
-    vinsert(Verb, "aAAAAAAAAAAAA");
-    printf("%d\n",detectLength(Verb));
-
+    //최종 출력
+    printf("최종 구조체 출력:\n");
     for (int i = 0; i < detectLength(Verb); i++){
         printf("%s\n", Verb[i]);
     }
