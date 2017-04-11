@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+// 비록 Verb 리스트의 길이가 100이지만, 이는 실제로 사용된 문자열 배열 뒤에 덕지덕지 붙은 NULL값들도 포함한 값이다.
+// NULL 값을 제외한 Verb 리스트의 진짜 길이를 불러오는 함수
 int detectLength(char** List){
     int counter = 0;
     for (counter = 0; counter < 100; counter++){
@@ -11,6 +13,7 @@ int detectLength(char** List){
     return 100;
 }
 
+// 각 문자열의 알파벳을 비교하고, string이 배열의 n-th index에 들어갈 수 있는 자격이 있다면, 기존 n-th index 이상의 문자열들을 n+1 자리로 옮긴 뒤 string 을 n 자리로 삽입한다. (여기서 이 n 은 counter 변수로 대신한다.)
 void vinsert(char** List, char* string){
     int counter = 0;
     int length = detectLength(List);
