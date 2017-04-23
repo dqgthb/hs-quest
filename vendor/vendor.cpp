@@ -4,10 +4,13 @@ using namespace std;
 class vendor{
 
     public:
+        vendor();
 
         void letusstart()
         {
-            //while(1){
+            manage man;
+            sell se;
+            while(1){
                 cout << "시작메뉴" << endl;
                 cout << "---------------------" << endl;
                 cout << "1.관리" << endl;
@@ -15,18 +18,36 @@ class vendor{
                 cout << "3.종료" << endl;
                 int startop;
                 cin >> startop;
-                void startmenu();
-                if (startop == 1);
-                else if (startop == 2);
+                //void startmenu();
+                if (startop == 1){
+                    man.manmenu();
+                    man.realmanage(se);
+                }
+                else if (startop == 2){
+                    se.sellmenu();
+                    se.selling();
+                }
                 else if (startop == 3)
-                    exit(1);
+                    break;
                 else
-                    cout << "다시 입력하시오";
+                    cout << "다시 입력하시오"<<endl;
 
 
-            //}
+            }
 
         }
+        class sell{
+
+            private:
+                int n1, n2, n3, n4, n5;
+
+            public:
+                void sellmenu();
+                void selling();
+                void printall();
+                sell();
+
+        }mysell;
 
         class manage{
 
@@ -37,35 +58,38 @@ class vendor{
             manage();
             void manmenu();
             void balance();
-            void print();
-            void realmanage()
+            void printall(vendor *v);
+            void realmanage(vendor::sell s)
             {
                 void startmenu();
+                cin >> manuop;
                 if (manuop == 1)
-                    balance();
+                    std::cout << "졸립다 자야 겠다. " << std::endl;
                 else if (manuop == 2)
-                    print();
-                else if (manuop == 3);
+                    s.printall();
+                else if (manuop == 3)
+                    return;
                 else
-                    cout << "다시 입력하시오";
+                    cout << "다시 입력하시오" << endl;
             }
         };
-        class sell{
-
-            private:
-                int n1, n2, n3, n4, n5;
-
-            private:
-
-                void sellmenu();
-                void selling();
-            public:
-                sell();
-
-        };
 };
-
+void vendor::manage::printall(vendor *v){
+    v->mysell.printall();
+}
+void vendor::sell::printall(){
+    std::cout <<"n1: "<< n1 << std::endl;
+    std::cout <<"n2: "<< n2 << std::endl;
+    std::cout <<"n3: "<< n3 << std::endl;
+    std::cout <<"n4: "<< n4 << std::endl;
+    std::cout <<"n5: "<< n5 << std::endl;
+}
+vendor::vendor(void){
+    vendor::manage man;
+    vendor::sell se;
+}
 vendor::manage::manage(){
+    manuop = 0;
 }
 void vendor::manage::balance()
 {
@@ -90,15 +114,15 @@ void vendor::manage::balance()
 
 }
 
-void vendor::manage::print()
-{
+//void vendor::manage::print()
+//{
 
     //cout << "콜라는" << n1 << "개 남았습니다.";
     //cout << "사이다는" << n2 << "개 남았습니다.";
     //cout << "환타는" << n3 << "개 남았습니다.";
     //cout << "커피는" << n4 << "개 남았습니다.";
     //cout << "이온음료는" << n5 << "개 남았습니다.";
-}
+//}
 
 vendor::sell::sell(){
     n1=10;
@@ -113,21 +137,27 @@ vendor::sell::sell(){
 void vendor::sell::selling()
 {
     int drink;
-    cout << "원하는 음료를 선택하시오";
+    cout << "원하는 음료를 선택하시오" << endl;
     cin >> drink;
-    if (drink == 1)
+    if (drink == 1){
         n1 = n1 - 1;
-    else if (drink == 1)
+        std::cout << "남은 갯수" << n1 << std::endl;}
+    else if (drink == 2){
         n2 = n2 - 1;
-    else if (drink == 1)
+        std::cout << "남은 갯수" << n2 << std::endl;}
+    else if (drink == 3){
         n3 = n3 - 1;
-    else if (drink == 1)
+        std::cout << "남은 갯수" << n3 << std::endl;}
+    else if (drink == 4){
         n4 = n4 - 1;
-    else if (drink == 1)
+        std::cout << "남은 갯수" << n4 << std::endl;}
+    else if (drink == 5){
         n5 = n5 - 1;
-    else if (drink == 6);
+        std::cout << "남은 갯수" << n5 << std::endl;}
+    else if (drink == 6)
+        return;
     else
-        cout << "다시 입력하세요";
+        cout << "다시 입력하세요" << endl;
 
 
 
@@ -162,32 +192,8 @@ void vendor::sell::sellmenu()
 
 int main()
 {
-    int i,j;
     vendor money;
-    vendor::manage man;
-    vendor::sell se;
-    money.letusstart();
-    cin >> i;
-    if (i == 1)
-    {
-        man.manmenu();
-        cin >> j;
-        if (j == 1)
-            man.balance();
-        else if (j == 2)
-            man.print();
-        else if (j == 3);
-        else
-            cout << "다시 쳐줘 제발";
-    }
-    else if (i == 2)
-    {
-        ;
-    }
-    else if (i == 3)
-    {
-        return 0;
-    }
-
+    static vendor *moneyp = &money;
+    moneyp->letusstart();
 
 }
