@@ -193,7 +193,7 @@ void vendor::sell::sellmenu()
 int main()
 {
     vendor money;
-    static vendor *moneyp = &money;
-    moneyp->letusstart();
+    //static vendor *moneyp = &money;
+    money.letusstart();
 
 }
