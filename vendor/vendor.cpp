@@ -4,8 +4,6 @@ using namespace std;
 class vendor{
 
     public:
-        vendor();
-
         void letusstart()
         {
             manage man;
@@ -21,7 +19,7 @@ class vendor{
                 //void startmenu();
                 if (startop == 1){
                     man.manmenu();
-                    man.realmanage(se);
+                    man.realmanage(&se);
                 }
                 else if (startop == 2){
                     se.sellmenu();
@@ -31,10 +29,9 @@ class vendor{
                     break;
                 else
                     cout << "다시 입력하시오"<<endl;
-
-
+                cin.clear();
             }
-
+            return;
         }
         class sell{
 
@@ -42,12 +39,17 @@ class vendor{
                 int n1, n2, n3, n4, n5;
 
             public:
+                sell();
                 void sellmenu();
                 void selling();
                 void printall();
-                sell();
+                void change_n1(int);
+                void change_n2(int);
+                void change_n3(int);
+                void change_n4(int);
+                void change_n5(int);
 
-        }mysell;
+        };
 
         class manage{
 
@@ -57,16 +59,16 @@ class vendor{
             public:
             manage();
             void manmenu();
-            void balance();
+            void balance(vendor::sell *s);
             //void printall(vendor *v);
-            void realmanage(vendor::sell s)
+            void realmanage(vendor::sell *s)
             {
                 void startmenu();
                 cin >> manuop;
                 if (manuop == 1)
-                    std::cout << "졸립다 자야 겠다. " << std::endl;
+                    balance(s);
                 else if (manuop == 2)
-                    s.printall();
+                    s->printall();
                 else if (manuop == 3)
                     return;
                 else
@@ -75,8 +77,8 @@ class vendor{
         };
 };
 /*void vendor::manage::printall(vendor *v){
-    v->mysell.printall();
-}*/
+  v->mysell.printall();
+  }*/
 void vendor::sell::printall(){
     std::cout <<"n1: "<< n1 << std::endl;
     std::cout <<"n2: "<< n2 << std::endl;
@@ -84,32 +86,65 @@ void vendor::sell::printall(){
     std::cout <<"n4: "<< n4 << std::endl;
     std::cout <<"n5: "<< n5 << std::endl;
 }
-vendor::vendor(void){
-    vendor::manage man;
-    vendor::sell se;
+
+void vendor::sell::change_n1(int n){
+    n1 += n;
 }
+void vendor::sell::change_n2(int n){
+    n2 += n;
+
+}
+void vendor::sell::change_n3(int n){
+    n3 += n;
+
+}
+void vendor::sell::change_n4(int n){
+    n4 += n;
+
+}
+void vendor::sell::change_n5(int n){
+    n5 += n;
+
+}
+
 vendor::manage::manage(){
     manuop = 0;
 }
-void vendor::manage::balance()
+
+void vendor::manage::balance(vendor::sell *s)
 {
+    std::cout << "현재 재고는 다음과 같습니다." << std::endl;
+    s->printall();
+    std::cout << "무슨 항목을 바꾸시겠습니까? 1-5 숫자 입력, 종료시 6:" << std::endl;
+
     int need;
     cin >> need;
+    if (need == 6){
+        std::cout << "시작메뉴로..." << std::endl;
+        return;
+    }
+    cout << need<< "번 항목을 고르셨습니다."  << endl;
+    cout <<  "얼마나 추가하시겠습니까? (제거시 음의 정수 입력)"  << endl;
     int change;
     cin >> change;
+    cout << "change is " << change << endl;
     if (need == 1)
-        cout << "콜라의 개수는" << change << "입니다.";
+        s->change_n1(change);
     else if (need == 2)
-        cout << "사이다의 개수는" << change << "입니다.";
+        s->change_n2(change);
     else if (need == 3)
-        cout << "환타의 개수는" << change << "입니다.";
+        s->change_n3(change);
     else if (need == 4)
-        cout << "커피의 개수는" << change << "입니다.";
+        s->change_n4(change);
     else if (need == 5)
-        cout << "이온음료의 개수는" << change << "입니다.";
-    else if (need == 6);
-    else
-        cout << "올바르게 입력하시오";
+        s->change_n5(change);
+    else{
+        cout << "올바르게 입력하시오" << endl;
+    }
+
+    std::cout << "변경 후 재고는 다음과 같습니다." << std::endl; 
+    s->printall();
+    std::cout << "시작 메뉴로..." << std::endl;
 
 
 }
@@ -117,11 +152,11 @@ void vendor::manage::balance()
 //void vendor::manage::print()
 //{
 
-    //cout << "콜라는" << n1 << "개 남았습니다.";
-    //cout << "사이다는" << n2 << "개 남았습니다.";
-    //cout << "환타는" << n3 << "개 남았습니다.";
-    //cout << "커피는" << n4 << "개 남았습니다.";
-    //cout << "이온음료는" << n5 << "개 남았습니다.";
+//cout << "콜라는" << n1 << "개 남았습니다.";
+//cout << "사이다는" << n2 << "개 남았습니다.";
+//cout << "환타는" << n3 << "개 남았습니다.";
+//cout << "커피는" << n4 << "개 남았습니다.";
+//cout << "이온음료는" << n5 << "개 남았습니다.";
 //}
 
 vendor::sell::sell(){
