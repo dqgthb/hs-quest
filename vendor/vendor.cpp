@@ -58,7 +58,7 @@ class vendor{
             manage();
             void manmenu();
             void balance();
-            void printall(vendor *v);
+            //void printall(vendor *v);
             void realmanage(vendor::sell s)
             {
                 void startmenu();
@@ -74,9 +74,9 @@ class vendor{
             }
         };
 };
-void vendor::manage::printall(vendor *v){
+/*void vendor::manage::printall(vendor *v){
     v->mysell.printall();
-}
+}*/
 void vendor::sell::printall(){
     std::cout <<"n1: "<< n1 << std::endl;
     std::cout <<"n2: "<< n2 << std::endl;
@@ -193,7 +193,6 @@ void vendor::sell::sellmenu()
 int main()
 {
     vendor money;
-    //static vendor *moneyp = &money;
     money.letusstart();
 
 }
