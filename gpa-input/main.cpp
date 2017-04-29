@@ -2,7 +2,7 @@
 #include <functional>
 #include "student.h"
 #include "menu_func.h"
-#include "global.h"
+#include "main.h"
 
 using namespace std;
 

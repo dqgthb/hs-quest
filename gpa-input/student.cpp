@@ -2,7 +2,6 @@
 #include <iostream>
 
 student::student(){
-    name = "anon";
     korean_score=0,math_score=0, english_score=0;
 }
 

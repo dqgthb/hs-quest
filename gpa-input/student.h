@@ -9,9 +9,9 @@ class student{
     int english_score;
 
  public:
-    int getKor(){ return korean_score; }
-    int getMat(){ return math_score; }
-    int getEng(){ return english_score; }
+    int get_korean_score(){ return korean_score; }
+    int get_math_score(){ return math_score; }
+    int get_english_score(){ return english_score; }
     std::string name;
     student();
     student(int,int,int);
