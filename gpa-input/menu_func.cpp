@@ -43,10 +43,26 @@ void retrieve(student** students){
     }
 
     std::cout << "Sample n = " << i+1 << std::endl;
+    retrieve_analyze(students);
 
 }
 
-void getsum(student **students){
-    int sum = 0;
+void retrieve_analyze(student** students){
+    auto add = [](int x, int y){
+        return x + y;
+    };
+    auto mult = [](int x, int y){
+        return x*y;
+    };
+
 }
+
+void fold(student** students, function<int(int,int)> fx, int init){
+    int result = init;
+    for (int i=0; students[i]!=NULL ;i++){
+        result = fx(result, students[i]->getMat());
+    }
+    std::cout << "result value is: " << result << std::endl;
+}
+
 
