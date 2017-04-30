@@ -27,6 +27,8 @@ int who_is_the_best_of_this_subject(student**, int (student::*)());
 void print_first_place(student**);
 int who_is_the_worst_of_this_subject(student**, int (student::*)());
 void print_last_place(student**);
-
+void update_student(student **);
+void delete_student(student **);
+void printall_students(student**);
 
 #endif

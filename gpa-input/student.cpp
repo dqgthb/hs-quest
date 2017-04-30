@@ -21,6 +21,8 @@ student::~student(){
 }
 
 void student::printall(){
+    std::cout << "<<<<<<<<<< STUDENT >>>>>>>>>>" << std::endl;
+
     std::cout << "name value is: " << name << std::endl;
     std::cout << "korean_score value is: " << korean_score << std::endl;
     std::cout << "math_score value is: " << math_score << std::endl;

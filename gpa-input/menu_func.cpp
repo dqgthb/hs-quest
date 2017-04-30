@@ -3,7 +3,7 @@
 
 int num_of_students(student **students){
     int number_of_students= 0;
-    for (number_of_students=0; number_of_students<MAX_STUDENTS && students[number_of_students] != NULL; number_of_students++) {
+    for (number_of_students=0; number_of_students<MAX_STUDENTS && students[number_of_students] != nullptr; number_of_students++) {
         ;
     }
     std::cout << "number_of_students value is: " << number_of_students << std::endl;
@@ -28,7 +28,6 @@ student* ask_score_to_add(){
 }
 
 void add_student(student **students){
-    //for (i = 0; i < MAX_STUDENTS && students[i] != NULL; i++) {
     int num = num_of_students(students);
     if(num >= MAX_STUDENTS){
         std::cout << "No More Enter" << std::endl;
@@ -37,15 +36,22 @@ void add_student(student **students){
     }
 }
 
-void retrieve(student** students){
+void printall_students(student** students){
     int i = 0;
-    int num = num_of_students(students);
+    //int num = num_of_students(students);
+    int num = MAX_STUDENTS;
     while(i < num){
-        std::cout << "# List Number " << i+1 << std::endl;
+        std::cout << "# Student List Number " << i+1 << std::endl;
+        if(students[i]!=nullptr){
         students[i]->printall();
+        }
         i++;
     }
     std::cout << "Total student number = " << i << std::endl;
+}
+
+void retrieve(student** students){
+    printall_students(students);
     retrieve_analyze(students);
 }
 
@@ -57,7 +63,8 @@ void print_sum(student **students){
 
 int calculate_sum_of_subject(student **students, int (student::*funcp_get_subject_score)(void)){
     int result = 0;
-    for (int i = 0; students[i] != NULL; i++){
+    int num = num_of_students(students);
+    for (int i = 0; i<num; i++){
         result = result + (students[i]->*funcp_get_subject_score)();
     }
     return result;
@@ -153,11 +160,9 @@ int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()
     for (int i=0; i < num; i++) {
         int score_of_current_student = (students[i]->*funcp)();
         std::cout << "current min: " << min << std::endl;
-
-
         std::cout << "score_of_current_student value is: " << score_of_current_student << std::endl;
 
-        if(min < score_of_current_student){
+        if(min > score_of_current_student){
             min = score_of_current_student;
             index_worst_student = i;
         }
@@ -170,13 +175,13 @@ int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()
 void print_last_place(student **students){
     std::cout << ">> print last place" << std::endl;
     std::cout << ">>> print last place math" << std::endl;
-    int index_worst_math = who_is_the_best_of_this_subject(students, &student::get_math_score);
+    int index_worst_math = who_is_the_worst_of_this_subject(students, &student::get_math_score);
     students[index_worst_math]->printall();
     std::cout << ">>> print last place korean" << std::endl;
-    int index_worst_korean = who_is_the_best_of_this_subject(students, &student::get_korean_score);
+    int index_worst_korean = who_is_the_worst_of_this_subject(students, &student::get_korean_score);
     students[index_worst_korean]->printall();
     std::cout << ">>> print last place english" << std::endl;
-    int index_worst_english = who_is_the_best_of_this_subject(students, &student::get_english_score);
+    int index_worst_english = who_is_the_worst_of_this_subject(students, &student::get_english_score);
     students[index_worst_english]->printall();
 }
 
@@ -185,4 +190,19 @@ void retrieve_analyze(student **students){
     print_mean(students);
     print_first_place(students);
     print_last_place(students);
+}
+
+void update_student(student **students){
+    int update_no = -1;
+    std::cout << "Update No?" << std::endl;
+    std::cin >> update_no;
+    students[update_no-1] = ask_score_to_add();
+}
+
+void delete_student(student **students){
+    int delete_no = -1;
+    std::cout << "Delete No?" << std::endl;
+    std::cin >> delete_no;
+    delete students[delete_no-1];
+    students[delete_no-1]=nullptr;
 }

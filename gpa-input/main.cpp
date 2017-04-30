@@ -59,16 +59,24 @@ int prompt(student **students){
     }
     case 3: {
         std::cout << "deleting..." << std::endl;
+        delete_student(students);
         break;
     }
     case 4: {
         std::cout << "updating..." << std::endl;
+        update_student(students);
         break;
     }
     case 5: {
         std::cout << "quit menu..." << std::endl;
         std::cout << "Bye!" << std::endl;
         break;
+    }
+    case 6: {
+        std::cout << "hidden! print all students" << std::endl;
+        printall_students(students);
+        break;
+
     }
     default:
         std::cout << "No such menu!" << std::endl;
@@ -83,15 +91,14 @@ int prompt(student **students){
 int main(){
     student deon;
     deon.printall();
-    student *chris = new student(1,2,3);
+    student *chris = new student(50,52,56);
     chris->name = "Chris Moriaty";
     chris->printall();
     student **students = (student **)calloc(MAX_STUDENTS, sizeof *students);
     students[0] = chris;
-    students[1] = &deon;
+    students[1] = new student(63,74,45);;
     loop_program(students);
-    students[0]->printall();
-
+    std::cout << "loop_program terminated." << std::endl;
 
     return 0;
 }
