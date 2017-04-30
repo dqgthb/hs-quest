@@ -1,8 +1,9 @@
 #include "menu_func.h"
 #include <iostream>
 
-// actually, this code returns the index of first empty space. e.g. {1, null,3}, then returns 1
-int num_of_students(student **students){
+// This code returns the index of first empty space.
+// e.g. **student = {*student st1, nullptr, *student st2}, then returns 1 (as student[1] is nullptr)
+int first_empty_index(student **students){
     int number_of_students= 0;
     for (number_of_students=0; number_of_students<MAX_STUDENTS && students[number_of_students] != nullptr; number_of_students++) {
         ;
@@ -11,7 +12,7 @@ int num_of_students(student **students){
     return number_of_students;
 }
 
-// This returns the real students number in the student**.
+// This returns the total students number in the student**.
 int how_many_students(student **students){
     int number_of_students=0;
     for (int i = 0; i < MAX_STUDENTS; i++){
@@ -22,7 +23,7 @@ int how_many_students(student **students){
     return number_of_students;
 }
 
-student* ask_score_to_add(){
+student* ask_score(){
     int korean_score=-1;
     int math_score=-1;
     int english_score=-1;
@@ -41,17 +42,17 @@ student* ask_score_to_add(){
 
 void add_student(student **students){
     // requires to get index of first empty space, since we are going to add the new student object there.
-    int num = num_of_students(students);
+    int num = first_empty_index(students);
     if(num >= MAX_STUDENTS){
         std::cout << "No More Enter" << std::endl;
     }else{
-        students[num] = ask_score_to_add();
+        students[num] = ask_score();
     }
 }
 
 void printall_students(student** students){
     int i = 0;
-    //int num = num_of_students(students);
+    //int num = first_empty_index(students);
     int num = MAX_STUDENTS;
     while(i < num){
         std::cout << "# Student List Number " << i+1 << std::endl;
@@ -76,7 +77,7 @@ void print_sum(student **students){
 /*
   int calculate_sum_of_subject(student **students, int (student::*funcp_get_subject_score)(void)){
   int result = 0;
-  int num = num_of_students(students);
+  int num = first_empty_index(students);
   for (int i = 0; i<num; i++){
   result = result + (students[i]->*funcp_get_subject_score)();
   }
@@ -144,7 +145,7 @@ void print_mean_english(student **students){
 
 /*
   int who_is_the_best_of_this_subject(student **students, int (student::*funcp)()){
-  int num = num_of_students(students);
+  int num = first_empty_index(students);
   int max = -1;
   int index_best_student = -1;
   for (int i=0; i < num; i++) {
@@ -192,7 +193,7 @@ void print_first_place(student **students){
 
 /*
 int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()){
-    int num = num_of_students(students);
+    int num = first_empty_index(students);
     int min = 101;
     int index_worst_student = -1;
     for (int i=0; i < num; i++) {
@@ -246,7 +247,7 @@ void update_student(student **students){
     int update_no = -1;
     std::cout << "Update No?" << std::endl;
     std::cin >> update_no;
-    students[update_no-1] = ask_score_to_add();
+    students[update_no-1] = ask_score();
 }
 
 void delete_student(student **students){

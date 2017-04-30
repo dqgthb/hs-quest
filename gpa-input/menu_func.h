@@ -6,9 +6,10 @@
 #include <iostream>
 using namespace std;
 
-int num_of_students(student**);
+int first_empty_index(student**);
+int how_many_students(student**);
 void add_student(student**);
-student* ask_score_to_add();
+student* ask_score();
 void retrieve(student**);
 void retrieve_analyze(student** );
 void print_first_place(student**);
