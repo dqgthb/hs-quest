@@ -112,7 +112,7 @@ void print_mean_english(student **students){
 }
 
 
-int who_is_the_best_at_this_subject(student **students, int (student::*funcp)()){
+int who_is_the_best_of_this_subject(student **students, int (student::*funcp)()){
     int num = num_of_students(students);
     int max = -1;
     int index_best_student = -1;
@@ -136,17 +136,17 @@ int who_is_the_best_at_this_subject(student **students, int (student::*funcp)())
 void print_first_place(student **students){
     std::cout << ">> print first place" << std::endl;
     std::cout << ">>> print first place math" << std::endl;
-    int index_best_math = who_is_the_best_at_this_subject(students, &student::get_math_score);
+    int index_best_math = who_is_the_best_of_this_subject(students, &student::get_math_score);
     students[index_best_math]->printall();
     std::cout << ">>> print first place korean" << std::endl;
-    int index_best_korean = who_is_the_best_at_this_subject(students, &student::get_korean_score);
+    int index_best_korean = who_is_the_best_of_this_subject(students, &student::get_korean_score);
     students[index_best_korean]->printall();
     std::cout << ">>> print first place english" << std::endl;
-    int index_best_english = who_is_the_best_at_this_subject(students, &student::get_english_score);
+    int index_best_english = who_is_the_best_of_this_subject(students, &student::get_english_score);
     students[index_best_english]->printall();
 }
 
-int who_is_the_worst_at_this_subject(student **students, int (student::*funcp)()){
+int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()){
     int num = num_of_students(students);
     int min = 101;
     int index_worst_student = -1;
@@ -170,13 +170,13 @@ int who_is_the_worst_at_this_subject(student **students, int (student::*funcp)()
 void print_last_place(student **students){
     std::cout << ">> print last place" << std::endl;
     std::cout << ">>> print last place math" << std::endl;
-    int index_worst_math = who_is_the_best_at_this_subject(students, &student::get_math_score);
+    int index_worst_math = who_is_the_best_of_this_subject(students, &student::get_math_score);
     students[index_worst_math]->printall();
     std::cout << ">>> print last place korean" << std::endl;
-    int index_worst_korean = who_is_the_best_at_this_subject(students, &student::get_korean_score);
+    int index_worst_korean = who_is_the_best_of_this_subject(students, &student::get_korean_score);
     students[index_worst_korean]->printall();
     std::cout << ">>> print last place english" << std::endl;
-    int index_worst_english = who_is_the_best_at_this_subject(students, &student::get_english_score);
+    int index_worst_english = who_is_the_best_of_this_subject(students, &student::get_english_score);
     students[index_worst_english]->printall();
 }
 
