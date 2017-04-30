@@ -2,6 +2,7 @@
 using namespace std;
 
 //originally main.h
+///////////////////
 #ifndef MAX_STUDENTS
 #define MAX_STUDENTS 10
 #define MAX_SCORE 100
@@ -9,6 +10,7 @@ using namespace std;
 #endif
 
 //originally student.h
+//////////////////////
 #ifndef STUDENT_H
 #define STUDENT_H
 #include<string>
@@ -32,6 +34,7 @@ class student{
 #endif
 
 //originally menu_func_h
+////////////////////////
 #ifndef MENU_FUNC_H
 #define MENU_FUNC_H
 
@@ -65,9 +68,7 @@ void printall_students(student**);
 #endif
 
 //originally menu_func.cpp
-
-
-
+//////////////////////////
 // This code returns the index of first empty space.
 // e.g. **student = {*student st1, nullptr, *student st2}, then returns 1 (as student[1] is nullptr)
 int first_empty_index(student **students){
@@ -326,7 +327,7 @@ void delete_student(student **students){
 }
 
 // originally student.cpp
-
+/////////////////////////
 student::student(){
     korean_score=0,math_score=0, english_score=0;
 }
@@ -357,6 +358,7 @@ void student::printall(){
 
 
 // originally main.h
+////////////////////
 void loop_program(student **);
 int prompt(student **);
 void stars(int);
