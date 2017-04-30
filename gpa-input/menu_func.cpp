@@ -163,7 +163,7 @@ void print_mean_english(student **students){
 */
 
 int who_is_the_best_of_this_subject(student **students, int(student::*funcp)()){
-    int max = -1;
+    int max = MIN_SCORE - 1;
     int index_best_student = -1;
     for (int i = 0; i < MAX_STUDENTS; i++){
         if (students[i]!=nullptr){
@@ -190,6 +190,7 @@ void print_first_place(student **students){
     students[index_best_english]->printall();
 }
 
+/*
 int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()){
     int num = num_of_students(students);
     int min = 101;
@@ -200,6 +201,22 @@ int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()
         if(min > score_of_current_student){
             min = score_of_current_student;
             index_worst_student = i;
+        }
+    }
+    return index_worst_student;
+}
+*/
+
+int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()){
+    int min = MAX_SCORE+1;
+    int index_worst_student = -1;
+    for (int i = 0; i < MAX_STUDENTS; i++){
+        if (students[i]!=nullptr){
+            int score_of_current_student = (students[i]->*funcp)();
+            if(min > score_of_current_student){
+                min = score_of_current_student;
+                index_worst_student = i;
+            }
         }
     }
     return index_worst_student;
