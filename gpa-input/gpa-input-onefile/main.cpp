@@ -104,7 +104,6 @@ student* ask_score(){
     std::cout << "Add Korean:" << korean_score << " points" << std::endl;
     std::cout << "Add Math:" << math_score << " points" << std::endl;
     std::cout << "Add English:" << english_score << " points" << std::endl;
-
     return new student(korean_score, math_score, english_score);
 }
 
@@ -266,7 +265,6 @@ int who_is_the_worst_of_this_subject(student **students, int (student::*funcp)()
     int index_worst_student = -1;
     for (int i=0; i < num; i++) {
         int score_of_current_student = (students[i]->*funcp)();
-
         if(min > score_of_current_student){
             min = score_of_current_student;
             index_worst_student = i;
@@ -349,7 +347,6 @@ student::~student(){
 
 void student::printall(){
     std::cout << "<<<<<<<<<<<<<<<<<<<< STUDENT >>>>>>>>>>>>>>>>>>>>" << std::endl;
-
     std::cout << "name value is: " << name << std::endl;
     std::cout << "korean_score value is: " << korean_score << std::endl;
     std::cout << "math_score value is: " << math_score << std::endl;
@@ -362,13 +359,11 @@ void student::printall(){
 void loop_program(student **);
 int prompt(student **);
 void stars(int);
-
 void stars(int times){
     for (int i=0; i<times; i++) {
         std::cout << "*";
     }
     std::cout << std::endl;
-
 }
 
 void printscreen(){
@@ -429,17 +424,14 @@ int prompt(student **students){
         std::cout << "hidden! print all students" << std::endl;
         printall_students(students);
         break;
-
     }
     default:
         std::cout << "No such menu!" << std::endl;
-
         std::cout << "Please make sure your input is correct." << std::endl;
         break;
     }
     return input;
 }
-
 
 int main(){
     student deon;

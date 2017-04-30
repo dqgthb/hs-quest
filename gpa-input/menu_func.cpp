@@ -243,17 +243,51 @@ void retrieve_analyze(student **students){
     print_last_place(students);
 }
 
+void check_data_valid(student* &studentobj, void (*funcp)(student* &)){
+    if(studentobj != nullptr){
+        funcp(studentobj);
+    }else{
+        std::cout << "No such data" << std::endl;
+    }
+}
+
+/*
 void update_student(student **students){
     int update_no = -1;
     std::cout << "Update No?" << std::endl;
     std::cin >> update_no;
-    students[update_no-1] = ask_score();
+    if(students[update_no-1]!=nullptr){
+        students[update_no-1] = ask_score();
+    }else{
+        std::cout << "No such data" << std::endl;
+    }
+}
+*/
+
+void update_student_index(student *&studentobj){
+    studentobj = ask_score();
+}
+
+void update_student(student **students){
+    int update_no = -1;
+    std::cout << "Update No?" << std::endl;
+    std::cin >> update_no;
+    check_data_valid(students[update_no-1], update_student_index);
+}
+
+void delete_student_index(student *&studentobj){
+    delete studentobj;
+    studentobj= nullptr;
 }
 
 void delete_student(student **students){
     int delete_no = -1;
     std::cout << "Delete No?" << std::endl;
     std::cin >> delete_no;
-    delete students[delete_no-1];
-    students[delete_no-1]=nullptr;
+    if (students[delete_no-1]!=nullptr){
+        delete students[delete_no-1];
+        students[delete_no-1]=nullptr;
+    }else{
+        std::cout << "No such data" << std::endl;
+    }
 }
