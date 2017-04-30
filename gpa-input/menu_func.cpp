@@ -47,7 +47,6 @@ void printall_students(student** students){
         }
         i++;
     }
-    std::cout << "Total student number = " << i << std::endl;
 }
 
 void retrieve(student** students){
