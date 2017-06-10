@@ -12,7 +12,7 @@ student::student(int x, int y, int z){
 }
 
 student::~student(){
-    std::cout << "~destructor call: " << std::endl;
+    cout << "~destructor call: " << std::endl;
     std::cout << "name value is: " << name << std::endl;
     std::cout << "korean_score value is: " << korean_score << std::endl;
     std::cout << "math_score value is: " << math_score << std::endl;

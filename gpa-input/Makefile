@@ -1,8 +1,9 @@
 CC=g++
-CCFLAGS=-g -Wall -Wextra -std=c++14
+CCFLAGS=-g -Wall -Wextra
 LDFLAGS=
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(SOURCES:.cpp=.o)
+HEADERS=$(wildcard *.h)
 TARGET=a.out
 
 all: $(TARGET)
@@ -11,11 +12,11 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.cpp %.h
+%.o: %.cpp $(HEADERS) Makefile
 	$(CC) $(CCFLAGS) -c $<
 
-%.o: %.cpp
-	$(CC) $(CCFLAGS) -c $<
+#%.o: %.cpp
+#$(CC) $(CCFLAGS) -c $<
 
 clean:
-	rm -f *.o $(TARGET)
+	rm -f *.o *.gch $(TARGET) && rm -rf a.out.dSYM

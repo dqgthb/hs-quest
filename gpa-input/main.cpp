@@ -10,6 +10,7 @@ void loop_program(student **);
 int prompt(student **);
 void stars(int);
 
+//test
 void stars(int times){
     for (int i=0; i<times; i++) {
         std::cout << "*";
@@ -87,20 +88,31 @@ int prompt(student **students){
     return input;
 }
 
+typedef struct hello{
+    int x;
+    int y;
+}hello;
+
 
 int main(){
-    student deon;
-    deon.printall();
+    int x;
+    int y = 5;
+    x = y;
     student *chris = new student(50,52,56);
     chris->name = "Chris Moriaty";
     chris->printall();
     student **students = (student **)calloc(MAX_STUDENTS, sizeof *students);
     students[0] = chris;
     students[1] = new student(63,74,45);;
+    students[1]->name = "hello";
     loop_program(students);
     std::cout << "loop_program terminated." << std::endl;
 
+    delete chris;
+    delete students[1];
+    free(students);
+
+    hello *myh = (hello*)malloc(1 * sizeof * myh);
+
     return 0;
 }
-
-

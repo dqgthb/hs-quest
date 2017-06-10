@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct SNode{
+    int data;
+    struct SNode *link;
+}SNode;
+
+void display(SNode *head){
+    SNode *p = head;
+    while (p != NULL){
+            printf("data: %d ", p->data);
+            printf("--");
+            p = p->link;
+          }
+    printf("\n");
+}
+
+SNode *create_node(int data, SNode *link) {
+    SNode *new_node;
+    new_node = (SNode *)malloc(sizeof(SNode));
+    new_node->data = data;
+    new_node->link = link;
+    return(new_node);
+}
+
+void insert_node(SNode **start, SNode *new_node){
+    SNode *current = *start;
+    if (*start == NULL){
+        *start = new_node;
+    } else if(new_node->data < current->data){
+        new_node->link = *start;
+        *start = new_node;
+    } else {
+        while((current->link != NULL) &&
+              (new_node->data > current->link->data)){
+            current = current->link;
+        }
+        new_node->link = current->link;
+        current->link = new_node;
+    }
+}
+
+int main() {
+    SNode *list1 = NULL;
+    insert_node(&list1, create_node(32, NULL));
+    insert_node(&list1, create_node(12, NULL));
+    display(list1);
+    return 0;
+}

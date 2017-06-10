@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef int element;
+typedef char* word;
+typedef struct SNode{
+    element data;
+    word name;
+    struct SNode *link;
+}SNode;
+
+void error(char *message)
+{
+    fprintf(stderr, "%s\n", message);
+    exit(1);
+}
+
+/*
+void insert_node(SNode **phead, SNode *p, SNode *new_node)
+{
+    if (*phead == NULL) {
+        new_node->link = NULL;
+        *phead = new_node;
+    } else if (p == NULL) {
+        new_node->link = *phead;
+        *phead = new_node;
+    } else {
+        new_node->link = p->link;
+        p->link = new_node;
+    }
+}
+*/
+
+void display(SNode *head)
+{
+    SNode *p = head;
+    if (p != NULL)
+        {
+      
+            printf("<<");
+            printf("data: %d ", p->data);
+            printf("name: %s ", p->name);
+            printf(">>");
+            printf("--");
+            display(p->link);
+        }
+    printf("\n");
+}
+
+//노드를 동적으로 생성하는 프로그램
+SNode *create_node(element data, word abc, SNode *link) {
+    SNode *new_node;
+    new_node = (SNode *)malloc(sizeof(SNode));
+    if (new_node == NULL) error("메모리 할당 에러");
+    new_node->data = data;
+    new_node->link = link;
+    new_node->name = abc;
+    return(new_node);
+}
+
+// append larger value at the back
+void insert_node(SNode **start, SNode *new_node){
+    SNode *current = *start;
+    if (*start == NULL){
+        *start = new_node;
+    } else if(new_node->data < current->data){
+        new_node->link = *start;
+        *start = new_node;
+    } else {
+        while((current->link != NULL) &&
+              (new_node->data > current->link->data)){
+            current = current->link;
+        }
+        new_node->link = current->link;
+        current->link = new_node;
+    }
+}
+
+
+//테스트 프로그램
+int main() {
+    SNode *list1 = NULL;
+    insert_node(&list1, create_node(32, "club", NULL));
+    insert_node(&list1, create_node(12, "sex", NULL));
+    insert_node(&list1, create_node(78, "onen", NULL));
+    display(list1);
+    return 0;
+}
